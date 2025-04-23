@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Borracharias Cadastradas</title>
+</head>
+<body>
+    <h1>Lista de Borracharias</h1>
+
+    {% if borracharias %}
+        <ul>
+            {% for b in borracharias %}
+                <li><strong>{{ b.nome }}</strong> - {{ b.endereco }} - {{ b.telefone }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma borracharia cadastrada ainda.</p>
+    {% endif %}
+
+    <a href="{{ url_for('main.home') }}">Voltar</a>
+</body>
+</html>

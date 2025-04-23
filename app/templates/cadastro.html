@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Borracharia</title>
+</head>
+<body>
+  <h1>Cadastro de Borracharia</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.nome.label }} {{ form.nome() }}</p>
+    <p>{{ form.endereco.label }} {{ form.endereco() }}</p>
+    <p>{{ form.telefone.label }} {{ form.telefone() }}</p>
+    <p>{{ form.horario.label }} {{ form.horario() }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
+</body>
+</html>
