@@ -1,14 +1,29 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
+from wtforms import StringField, SubmitField, PasswordField, SelectField
 from wtforms.validators import DataRequired, Email
 
-class BorrachariaForm(FlaskForm):
-    nome = StringField('Nome da Barracharia', validators=[DataRequired()])
-    endereco = StringField('Endereco', validators=[DataRequired()])
+class ServicoForm(FlaskForm):
+    nome = StringField('Nome do Serviço', validators=[DataRequired()])
+    
+    tipo = SelectField('Tipo de Serviço', choices=[
+        ('borracharia', 'Borracharia'),
+        ('oficina_mecanica', 'Oficina Mecânica'),
+        ('funilaria', 'Funilaria'),
+        ('auto_elétrica', 'Auto Elétrica'),
+        ('revisao', 'Revisão'),
+        ('lavagem', 'Lavagem'),
+        ('moto_oficina', 'Oficina de Motos'),
+        ('moto_borracharia', 'Borracharia para Motos'),
+        ('moto_revisao', 'Revisão de Motos'),
+        ('moto_lavagem', 'Lavagem de Motos'),
+        ('outro', 'Outro')
+    ])
+    
+    endereco = StringField('Endereço', validators=[DataRequired()])
     telefone = StringField('Telefone', validators=[DataRequired()])
-    horario = StringField('Horario de Funcionamento', validators=[DataRequired()])
+    horario = StringField('Horário de Funcionamento', validators=[DataRequired()])
     submit = SubmitField('Cadastrar')
-
+    
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     senha = PasswordField('Senha', validators=[DataRequired()])
