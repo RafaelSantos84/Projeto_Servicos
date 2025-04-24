@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, Email
 
 class BorrachariaForm(FlaskForm):
     nome = StringField('Nome da Barracharia', validators=[DataRequired()])
@@ -10,6 +10,6 @@ class BorrachariaForm(FlaskForm):
     submit = SubmitField('Cadastrar')
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    senha = StringField('Senha', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    senha = PasswordField('Senha', validators=[DataRequired()])
     submit = SubmitField('Entrar')
