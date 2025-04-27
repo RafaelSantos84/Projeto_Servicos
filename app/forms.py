@@ -31,7 +31,14 @@ class LoginForm(FlaskForm):
 
 class CadastroUsuarioForm(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     senha = PasswordField('Senha', validators=[DataRequired()])
     tipo = SelectField('Tipo de Conta', choices=[('borracharia', 'Borracharia'), ('admin', 'Admin')])
     submit = SubmitField('Cadastrar')
+
+class RegistroForm(FlaskForm):
+    nome = StringField('Nome', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    senha = PasswordField('Senha', validators=[DataRequired()])
+    tipo = SelectField('Tipo', choices=[('admin', 'Admin'), ('borracharia', 'Borracharia'), ('oficina', 'Oficina')])
+    submit = SubmitField('Registrar')
