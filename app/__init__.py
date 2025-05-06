@@ -20,8 +20,8 @@ def create_app():
     def load_user(user_id):
         return Usuario.query.get(int(user_id))
     
-    from .routes import main
-    app.register_blueprint(main)
+    from app.routes import register_routes
+    register_routes(app)
 
     
     return app
