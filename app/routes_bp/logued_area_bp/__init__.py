@@ -4,13 +4,13 @@ from app.models import Servico
 from app.forms import ServicoForm
 from app import db
 
-logued_area_pb = Blueprint('logued_area_pb', __name__)
-@logued_area_pb.route('/home')
+logued_area_bp = Blueprint('logued_area_bp', __name__)
+@logued_area_bp.route('/home')
 @login_required
 def home():
     return render_template('borracharias.html')
 
-@logued_area_pb.route('/cadastro', methods=['GET', 'POST'])
+@logued_area_bp.route('/cadastro', methods=['GET', 'POST'])
 @login_required
 def cadastro():
     form = ServicoForm()
