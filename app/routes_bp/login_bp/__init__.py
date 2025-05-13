@@ -13,7 +13,7 @@ def login():
         if usuario and usuario.verificar_senha(form.senha.data):
             login_user(usuario)
             flash('Login realizado com sucesso!', 'success')
-            return redirect(url_for('main.home'))
+            return redirect(url_for('logued_area_bp.home'))
         else:
             flash('Email ou senha incorretos.', 'danger')
     return render_template('login.html', form=form)
@@ -23,4 +23,4 @@ def login():
 def logout():
     logout_user()
     flash('Você saiu da conta.', 'info')
-    return redirect(url_for('main.login'))
+    return redirect(url_for('login.login'))

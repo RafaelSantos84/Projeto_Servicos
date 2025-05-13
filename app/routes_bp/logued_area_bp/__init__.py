@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_required, current_user
 from app.models import Servico
 from app.forms import ServicoForm
 from app import db
@@ -26,5 +26,11 @@ def cadastro():
         db.session.add(novo_servico)
         db.session.commit()
         flash('Serviço cadastrado com sucesso!', 'success')
-        return redirect(url_for('main.home'))
+        return redirect(url_for('logued_area_bp.home'))
     return render_template('cadastro.html', form=form)
+
+@logued_area_bp.route('/meus-servicos')
+@login_required
+def meus_servicos():
+    servicos = Servico.query.filter_by(usuario_id=current_user.id).all()
+    return render_template('meus_servicos.html', servicos=servicos)

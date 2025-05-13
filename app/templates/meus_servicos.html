@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Meus Serviços</h2>
+
+  {% if servicos %}
+    <ul>
+      {% for servico in servicos %}
+        <li>
+          <strong>{{ servico.nome }}</strong> - {{ servico.tipo }} <br>
+          {{ servico.endereco }} | {{ servico.telefone }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhum serviço cadastrado ainda.</p>
+  {% endif %}
+{% endblock %}
