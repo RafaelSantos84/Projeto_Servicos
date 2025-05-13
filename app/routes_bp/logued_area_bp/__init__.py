@@ -10,6 +10,7 @@ logued_area_bp = Blueprint('logued_area_bp', __name__)
 def home():
     return render_template('borracharias.html')
 
+
 @logued_area_bp.route('/cadastro', methods=['GET', 'POST'])
 @login_required
 def cadastro():
