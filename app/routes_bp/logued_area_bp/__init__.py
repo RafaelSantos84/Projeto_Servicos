@@ -5,13 +5,13 @@ from app.forms import ServicoForm
 from app import db
 
 logued_area_bp = Blueprint('logued_area_bp', __name__)
-@logued_area_bp.route('/home')
+@logued_area_bp.route('/home/')
 @login_required
 def home():
     return render_template('borracharias.html')
 
 
-@logued_area_bp.route('/cadastro', methods=['GET', 'POST'])
+@logued_area_bp.route('/cadastro/', methods=['GET', 'POST'])
 @login_required
 def cadastro():
     form = ServicoForm()
@@ -30,7 +30,7 @@ def cadastro():
         return redirect(url_for('logued_area_bp.home'))
     return render_template('cadastro.html', form=form)
 
-@logued_area_bp.route('/meus-servicos')
+@logued_area_bp.route('/meus-servicos/')
 @login_required
 def meus_servicos():
     servicos = Servico.query.filter_by(usuario_id=current_user.id).all()

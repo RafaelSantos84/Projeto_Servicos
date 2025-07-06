@@ -5,7 +5,7 @@ from app.forms import LoginForm
 
 login_bp = Blueprint('login', __name__, template_folder='templates')
 
-@login_bp.route('/login', methods=['GET', 'POST'])
+@login_bp.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -18,7 +18,7 @@ def login():
             flash('Email ou senha incorretos.', 'danger')
     return render_template('login.html', form=form)
 
-@login_bp.route('/logout')
+@login_bp.route('/logout/')
 @login_required
 def logout():
     logout_user()

@@ -12,12 +12,12 @@ def create_app():
    
     db.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'main.login' # rota usada se o usuário não estiver logado
+    login_manager.login_view = 'main.login' # VERIFICAR se está ok! rota usada se o usuário não estiver logado
 
     from .models import Usuario
 
     @login_manager.user_loader
-    def load_user(user_id):
+    def load_user(user_id): #VVERIFICAR se está ok! verifica se o usuário está logado
         return Usuario.query.get(int(user_id))
     
     from app.routes import register_blueprints

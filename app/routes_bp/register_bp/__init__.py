@@ -5,7 +5,7 @@ from app import db
 
 register_bp = Blueprint('register_bp', __name__)
 
-@register_bp.route('/register', methods=['GET', 'POST'])
+@register_bp.route('/register/', methods=['GET', 'POST'])
 def register():
     form = RegistroForm()
     if form.validate_on_submit():
